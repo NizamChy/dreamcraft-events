@@ -1,7 +1,7 @@
 import ServicesCard from "./ServicesCard";
 
 const Services = ({ services }) => {
-  console.log(services);
+
   return (
     <div className="py-10">
       <h1 className="text-3xl font-semibold mb-8 text-center">Our Services</h1>

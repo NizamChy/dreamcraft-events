@@ -18,7 +18,6 @@ const serviceDetails = () => {
     setServiceDetail(findDetails);
   }, [id, serviceDetails]);
 
-  console.log(serviceDetail);
 
   return (
     <div>
