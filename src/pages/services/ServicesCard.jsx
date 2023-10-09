@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ServicesCard = ({ service }) => {
   const { id, name, image, price, short_description, service_details } =
     service || {};
@@ -6,10 +8,7 @@ const ServicesCard = ({ service }) => {
     <div>
       <div className="relative flex w-80 lg:w-96 h-[80%] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
         <div className="relative mx-4 mt-4 h-96 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
-          <img
-            src={image}
-            className="h-full w-full object-cover"
-          />
+          <img src={image} className="h-full w-full object-cover" />
         </div>
         <div className="p-6">
           <div className="mb-2 flex items-center justify-between">
@@ -25,12 +24,14 @@ const ServicesCard = ({ service }) => {
           </p>
         </div>
         <div className="p-6 pt-0">
-          <button
-            type="button"
-            className="w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2"
-          >
-            Details
-          </button>
+          <Link to={`/service/${id}`}>
+            <button
+              type="button"
+              className="w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2"
+            >
+              Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>

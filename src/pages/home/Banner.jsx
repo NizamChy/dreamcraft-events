@@ -1,7 +1,7 @@
 const Banner = () => {
   return (
     <div className="max-w-screen-lg mx-auto">
-      <div className="carousel w-full h-[80vh]">
+      <div className="carousel lg:w-full lg:h-[80vh]">
         <div id="slide1" className="carousel-item relative w-full">
           <img
             src="/images/event-1.png"

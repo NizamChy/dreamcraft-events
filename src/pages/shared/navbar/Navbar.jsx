@@ -1,16 +1,25 @@
-import { Link } from "react-router-dom";
+
 import { NavLink } from "react-router-dom";
-import Logo from "./Logo";
+
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProviders";
 
 const Navbar = () => {
+
+  const {user, logOut} = useContext(AuthContext);
+
+  const handleSignOut = () =>{
+    logOut()
+    .then()
+    .catch()
+  }
+
   return (
     <div className="max-w-screen-xl mx-auto">
-      <nav className="grid gap-2 md:flex justify-between py-7 mx-14 md:mx-5">
-        <Link to={"/"}>
-        <Logo></Logo>
-        </Link>
+      <nav className="grid gap-2 md:flex justify-center py-7 mx-14 md:mx-5">
+
         
-        <ul className="flex gap-5 text-xl font-semibold">
+        <ul className="grid grid-cols-3 gap-2 text-center md:flex md:gap-5 text-md lg:text-xl font-semibold">
 
           <li>
             <NavLink
@@ -25,7 +34,7 @@ const Navbar = () => {
 
           <li>
             <NavLink
-              to="/donation"
+              to="/services"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-[#A2783A] underline" : ""
               }
@@ -36,17 +45,31 @@ const Navbar = () => {
 
           <li>
             <NavLink
-              to="/statistics"
+              to="/about"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-[#A2783A] underline" : ""
               }
             >
-              About
+              About us
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/statistics"
+              to="/signup"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-[#A2783A] underline" : ""
+              }
+            >
+              Sign Up
+            </NavLink>
+          </li>
+          {
+            user ?
+            <button onClick={handleSignOut} className="btn btn-accent">Sign Out</button>
+            :
+            <li>
+            <NavLink
+              to="/signin"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-[#A2783A] underline" : ""
               }
@@ -54,16 +77,8 @@ const Navbar = () => {
               Sign in
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/statistics"
-              className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "text-[#A2783A] underline" : ""
-              }
-            >
-              Sign up
-            </NavLink>
-          </li>
+          }
+
 
         </ul>
       </nav>

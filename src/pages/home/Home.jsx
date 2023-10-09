@@ -1,8 +1,8 @@
 import { useLoaderData } from "react-router-dom";
 import Services from "../services/Services";
-import Header from "../shared/header/Header";
-import Navbar from "../shared/navbar/Navbar";
 import Banner from "./Banner";
+import AboutUs from "../about/AboutUs";
+import ContactUs from "../contact/ContactUs";
 const Home = () => {
 
 
@@ -17,13 +17,14 @@ const Home = () => {
         <h1 className="font-greatVibes font-semibold text-[#A2783A]">Turning Dreams into Unforgettable Moments</h1>
       </div> */}
 
-      <Header></Header>
-      <Navbar></Navbar>
+      {/* <Header></Header> */}
+      {/* <Navbar></Navbar> */}
       <Banner></Banner>
 
 
       <Services services={services}></Services>
-      <h2 className="text-2xl">This is home</h2>
+      <AboutUs></AboutUs>
+      <ContactUs></ContactUs>
 
       <div>
         <div>

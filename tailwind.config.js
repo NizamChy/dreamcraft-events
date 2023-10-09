@@ -5,9 +5,9 @@ export default {
     extend: {
       fontFamily: {
         greatVibes: " 'Great Vibes', cursive",
-        plexSerif: "'IBM Plex Serif', serif",
+        plexSerif: "'IBM Plex Serif'",
         robotoSlab: "'Roboto Slab', serif",
-        scopeOne: "'Scope One', serif",
+        scopeOne: "'Scope One'",
       },
     },
   },
