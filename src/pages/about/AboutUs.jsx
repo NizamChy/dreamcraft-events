@@ -16,7 +16,7 @@ const AboutUs = () => {
             </p>
           </div>
 
-
+          {/* Right side - Images */}
           <div className="mt-10 md:mt-0">
             <div className="flex justify-center">
               <img
