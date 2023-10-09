@@ -1,28 +1,40 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const SignIn = () => {
   const { signIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleSignin = (e) => {
     e.preventDefault();
-    // const email = e.target.email.value;
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-    console.log(email, password);
+  
     signIn(email, password)
       .then((result) => {
         console.log(result.user);
+        toast.success('Sign-in successful');
+        setTimeout(() => {
+          navigate(location?.state ? location.state : '/');
+        }, 1000); // Delay navigation by 1 second (adjust the delay as needed)
       })
       .catch((error) => {
         console.error(error);
+        toast.error('Sign-in failed. Please check your credentials.');
       });
   };
+  
+  
 
   return (
     <div className="min-h-[100vh]">
+       <ToastContainer />
       {/* Sign in */}
       <div>
         <div className="hero ">

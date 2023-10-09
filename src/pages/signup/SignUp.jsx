@@ -1,30 +1,53 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const SignUp = () => {
   const { createUser } = useContext(AuthContext);
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    // const email = e.target.email.value;
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
 
-    //create user
+    
+    const minLength = 6;
+    const hasCapitalLetter = /[A-Z]/.test(password);
+    const hasSpecialCharacter = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\-]/.test(password);
+
+    
+    if (password.length < minLength) {
+      toast.error('Password must be at least 6 characters long.');
+      return;
+    }
+    if (!hasCapitalLetter) {
+      toast.error('Password must contain at least one capital letter.');
+      return;
+    }
+    if (!hasSpecialCharacter) {
+      toast.error('Password must contain at least one special character.');
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        toast.success('Sign-up successful');
       })
       .catch((error) => {
         console.error(error);
+        toast.error('Sign-up failed. Please try again.');
       });
   };
-
   return (
     <div className="min-h-[100vh]">
-      {/* Sign in */}
+       <ToastContainer />
+      {/* Sign up */}
       <div>
         <div className="hero">
           <div className="hero-content flex-col lg:flex-row">
@@ -95,7 +118,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      {/* End of Sign in */}
+      {/* End of Sign up */}
     </div>
   );
 };

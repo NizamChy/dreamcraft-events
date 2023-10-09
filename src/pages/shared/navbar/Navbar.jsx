@@ -65,7 +65,7 @@ const Navbar = () => {
           </li>
           {
             user ?
-            <button onClick={handleSignOut} className="btn btn-accent">Sign Out</button>
+            <li onClick={handleSignOut} className="cursor-pointer">Sign Out</li>
             :
             <li>
             <NavLink
